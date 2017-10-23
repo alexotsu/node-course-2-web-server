@@ -95,7 +95,7 @@ app.get('/about', (req, res) => {
 
 // create /project.hbs, render header + footer. New link in home page. Commit to GitHub, commit to Heroku remote
 app.get('/projects', (req, res) => {
-  res.render('project.hbs', {
+  res.render('projects.hbs', {
     pageTitle: 'Projects'
   });
 });
@@ -165,4 +165,7 @@ This can be run from terminal using npm start
 
 **heroku create** will create a new Heroku remote
 From there, can configure DNS to point to custom app
+
+**git push** to send to GitHub
+**git push heroku** to send to Heroku
 */
