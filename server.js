@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
+// to run locally: if process.env.PORT does not exist, port is set to 3000 instead
 let app = express();
 // express doesn't need arguments, only need to call express as a function and do configuration later
 
@@ -97,8 +99,9 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server is up on Port 3000');
+app.listen(port, () => {
+  // to deploy on Heroku, port needs to be dynamic (Heroku will tell app which port to use)
+  console.log(`Server is up on Port ${port}`);
 });
 // binds app to port on machine. Never 'finishes' executing,
 // also takes a function as 2nd argument
@@ -139,4 +142,14 @@ ssh-keygen -t rsa -b 4096 -C 'alexotsu@gmail.com'
 
 Follow the instructions on GitHub to create a repo there.
 
+Download + install Heroku CLI, then login locally using **heroku login**
+Once logged in, can communicate between cmd and Heroku servers
+**heroku keys:add** pushes SSH key
+**heroku keys:remove emailAddress** will remove the key associated with that email address
+
+in bash: **ssh -v git@heroku.com** authenticates public/private keypair
+
+"start" : "node script.js"
+Made "start" script in package.json. Heroku-specific command, specifies which command to run
+This can be run from terminal using npm start
 */
