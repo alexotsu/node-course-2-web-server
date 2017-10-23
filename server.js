@@ -122,4 +122,21 @@ Witout configuration, will return file list as 'untracked files'
 of 'node_modules, package.json, public/, server.js. server.log, views/', only need package.json, public/ server.js, views/
 **git add fileName**
 => **git add package.json**
+
+.gitignore file takes file and/or directory names as plain text, separated by line, and tells git which files not to update. Then use **git add .gitignore**
+
+**git commit -m 'Message'**
+
+Guide for SSH: https://help.github.com/articles/connecting-to-github-with-ssh/
+
+**ls -al ~/.ssh** : Check for SSH
+
+ssh-keygen -t rsa -b 4096 -C 'alexotsu@gmail.com'
+
+**eval "$(ssh-agent -s)"** : Start SSH agent and give public key
+**ssh-add ~/.ssh/id_rsa** : matches our private key => 'identity added'
+**ssh -T git@github.com** : tests SSH connection with GitHub
+
+Follow the instructions on GitHub to create a repo there.
+
 */
