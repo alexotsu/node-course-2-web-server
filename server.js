@@ -85,16 +85,25 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   // res.send('About Page');
   res.render('about.hbs', {
-    pageTitle: 'About Page',
+    pageTitle: 'About Page'
     // currentYear: new Date().getFullYear()
   });
 });
 // .render allows you to render any of the files you have set up through current view engine. Takes 2 arguments, page to render and an object. Object would be used so that information injection doesn't need to take place in hbs file
 // '.get' can be used to make as many routes as desired
 
+
+// create /project.hbs, render header + footer. New link in home page. Commit to GitHub, commit to Heroku remote
+app.get('/projects', (req, res) => {
+  res.render('project.hbs', {
+    pageTitle: 'Projects'
+  });
+});
+
+
 app.get('/bad', (req, res) => {
   res.send({
-    error: 'Unable to handle request',
+    error: 'Unable to handle request'
     // status: 'Bad gateway'
   });
 });
@@ -124,6 +133,7 @@ Commands:
 Witout configuration, will return file list as 'untracked files'
 of 'node_modules, package.json, public/, server.js. server.log, views/', only need package.json, public/ server.js, views/
 **git add fileName**
+**git add .** will add all modified files in directory to tracked
 => **git add package.json**
 
 .gitignore file takes file and/or directory names as plain text, separated by line, and tells git which files not to update. Then use **git add .gitignore**
@@ -152,4 +162,7 @@ in bash: **ssh -v git@heroku.com** authenticates public/private keypair
 "start" : "node script.js"
 Made "start" script in package.json. Heroku-specific command, specifies which command to run
 This can be run from terminal using npm start
+
+**heroku create** will create a new Heroku remote
+From there, can configure DNS to point to custom app
 */
